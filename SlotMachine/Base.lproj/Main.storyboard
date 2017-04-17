@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SlotMachine" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6uL-mx-UdC" customClass="ReelsContainerView" customModule="SlotMachine" customModuleProvider="target">
+                                <rect key="frame" x="37" y="40" width="300" height="300"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mvM-fg-dJi" customClass="ReelView" customModule="SlotMachine" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="16" width="80" height="268"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="VhY-iK-WtU"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xrl-30-fRy" customClass="ReelView" customModule="SlotMachine" customModuleProvider="target">
+                                        <rect key="frame" x="204" y="16" width="80" height="268"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="Q26-0v-6A0"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RvQ-Kq-oVZ" customClass="ReelView" customModule="SlotMachine" customModuleProvider="target">
+                                        <rect key="frame" x="110" y="16" width="80" height="268"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="kxz-gj-iHm"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="RvQ-Kq-oVZ" secondAttribute="bottom" constant="16" id="4oK-eW-uee"/>
+                                    <constraint firstItem="RvQ-Kq-oVZ" firstAttribute="top" secondItem="6uL-mx-UdC" secondAttribute="top" constant="16" id="6q0-hA-KsZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="xrl-30-fRy" secondAttribute="bottom" constant="16" id="NVR-cF-8SW"/>
+                                    <constraint firstItem="xrl-30-fRy" firstAttribute="top" secondItem="6uL-mx-UdC" secondAttribute="top" constant="16" id="YUd-Z7-bgh"/>
+                                    <constraint firstItem="mvM-fg-dJi" firstAttribute="top" secondItem="6uL-mx-UdC" secondAttribute="top" constant="16" id="g2v-mn-y6z"/>
+                                    <constraint firstAttribute="bottom" secondItem="mvM-fg-dJi" secondAttribute="bottom" constant="16" id="i10-IW-kXa"/>
+                                    <constraint firstAttribute="width" constant="300" id="ofu-Ck-WCE"/>
+                                    <constraint firstItem="mvM-fg-dJi" firstAttribute="leading" secondItem="6uL-mx-UdC" secondAttribute="leading" constant="16" id="xad-6F-ul2"/>
+                                    <constraint firstAttribute="trailing" secondItem="xrl-30-fRy" secondAttribute="trailing" constant="16" id="yFU-Ks-Bo2"/>
+                                    <constraint firstItem="RvQ-Kq-oVZ" firstAttribute="centerX" secondItem="6uL-mx-UdC" secondAttribute="centerX" id="zQM-gd-AAa"/>
+                                    <constraint firstAttribute="height" constant="300" id="zdt-Cd-fcu"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="reels" destination="mvM-fg-dJi" collectionClass="NSMutableArray" id="0xQ-ST-pSW"/>
+                                    <outletCollection property="reels" destination="RvQ-Kq-oVZ" collectionClass="NSMutableArray" id="35A-Uz-cd6"/>
+                                    <outletCollection property="reels" destination="xrl-30-fRy" collectionClass="NSMutableArray" id="0rc-kA-DVf"/>
+                                </connections>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLT-Mk-Juz">
+                                <rect key="frame" x="170" y="356" width="34" height="30"/>
+                                <state key="normal" title="Start"/>
+                                <connections>
+                                    <action selector="startButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YEx-gq-1Em"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t5L-hb-LgZ">
+                                <rect key="frame" x="171" y="402" width="32" height="30"/>
+                                <state key="normal" title="Stop"/>
+                                <connections>
+                                    <action selector="stopButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AnD-Rq-0XO"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="t5L-hb-LgZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6xe-xn-dNz"/>
+                            <constraint firstItem="oLT-Mk-Juz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Dd8-X2-XqR"/>
+                            <constraint firstItem="6uL-mx-UdC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="KSg-lq-hkk"/>
+                            <constraint firstItem="t5L-hb-LgZ" firstAttribute="top" secondItem="oLT-Mk-Juz" secondAttribute="bottom" constant="16" id="NFE-bW-pRo"/>
+                            <constraint firstItem="oLT-Mk-Juz" firstAttribute="top" secondItem="6uL-mx-UdC" secondAttribute="bottom" constant="16" id="QTm-x3-v19"/>
+                            <constraint firstItem="6uL-mx-UdC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="h2T-PV-v5Q"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="reelsContainerView" destination="6uL-mx-UdC" id="xrq-ek-1T8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140" y="137.18140929535232"/>
+        </scene>
+    </scenes>
+</document>
