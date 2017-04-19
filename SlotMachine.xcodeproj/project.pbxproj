@@ -15,6 +15,7 @@
 		3553068C1EA53E1A00EAC8F1 /* SlotMachineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3553068B1EA53E1A00EAC8F1 /* SlotMachineTests.swift */; };
 		355306971EA53E2500EAC8F1 /* ReelsContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355306961EA53E2500EAC8F1 /* ReelsContainerView.swift */; };
 		355306991EA53E3B00EAC8F1 /* ReelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355306981EA53E3B00EAC8F1 /* ReelView.swift */; };
+		35E194511EA7C98C00DBED12 /* SlotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E194501EA7C98C00DBED12 /* SlotView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		3553068D1EA53E1A00EAC8F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		355306961EA53E2500EAC8F1 /* ReelsContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReelsContainerView.swift; sourceTree = "<group>"; };
 		355306981EA53E3B00EAC8F1 /* ReelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReelView.swift; sourceTree = "<group>"; };
+		35E194501EA7C98C00DBED12 /* SlotView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlotView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				355306821EA53E1A00EAC8F1 /* Info.plist */,
 				355306961EA53E2500EAC8F1 /* ReelsContainerView.swift */,
 				355306981EA53E3B00EAC8F1 /* ReelView.swift */,
+				35E194501EA7C98C00DBED12 /* SlotView.swift */,
 			);
 			path = SlotMachine;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35E194511EA7C98C00DBED12 /* SlotView.swift in Sources */,
 				355306991EA53E3B00EAC8F1 /* ReelView.swift in Sources */,
 				355306791EA53E1A00EAC8F1 /* ViewController.swift in Sources */,
 				355306971EA53E2500EAC8F1 /* ReelsContainerView.swift in Sources */,
@@ -422,6 +426,7 @@
 				355306921EA53E1A00EAC8F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		355306931EA53E1A00EAC8F1 /* Build configuration list for PBXNativeTarget "SlotMachineTests" */ = {
 			isa = XCConfigurationList;
@@ -430,6 +435,7 @@
 				355306951EA53E1A00EAC8F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
