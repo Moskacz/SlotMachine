@@ -16,6 +16,7 @@
 		355306971EA53E2500EAC8F1 /* ReelsContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355306961EA53E2500EAC8F1 /* ReelsContainerView.swift */; };
 		355306991EA53E3B00EAC8F1 /* ReelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355306981EA53E3B00EAC8F1 /* ReelView.swift */; };
 		35E194511EA7C98C00DBED12 /* SlotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E194501EA7C98C00DBED12 /* SlotView.swift */; };
+		35E194531EA7D6FF00DBED12 /* RandomizationAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E194521EA7D6FF00DBED12 /* RandomizationAlgorithm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		355306961EA53E2500EAC8F1 /* ReelsContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReelsContainerView.swift; sourceTree = "<group>"; };
 		355306981EA53E3B00EAC8F1 /* ReelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReelView.swift; sourceTree = "<group>"; };
 		35E194501EA7C98C00DBED12 /* SlotView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlotView.swift; sourceTree = "<group>"; };
+		35E194521EA7D6FF00DBED12 /* RandomizationAlgorithm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomizationAlgorithm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				355306961EA53E2500EAC8F1 /* ReelsContainerView.swift */,
 				355306981EA53E3B00EAC8F1 /* ReelView.swift */,
 				35E194501EA7C98C00DBED12 /* SlotView.swift */,
+				35E194521EA7D6FF00DBED12 /* RandomizationAlgorithm.swift */,
 			);
 			path = SlotMachine;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				35E194511EA7C98C00DBED12 /* SlotView.swift in Sources */,
+				35E194531EA7D6FF00DBED12 /* RandomizationAlgorithm.swift in Sources */,
 				355306991EA53E3B00EAC8F1 /* ReelView.swift in Sources */,
 				355306791EA53E1A00EAC8F1 /* ViewController.swift in Sources */,
 				355306971EA53E2500EAC8F1 /* ReelsContainerView.swift in Sources */,

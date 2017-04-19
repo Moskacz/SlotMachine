@@ -11,8 +11,7 @@ import UIKit
 class ReelsContainerView: UIView {
     
     @IBOutlet var reels: [ReelView]!
-    
-    private let defaultReelSpeed: CGFloat = 400.0
+    var randomizationAlgorithm: RandomizationAlgorithm<CGFloat>?
     
     func setupViews() {
         for reel in reels {
@@ -22,7 +21,15 @@ class ReelsContainerView: UIView {
     
     func startReelsAnimation() {
         for reel in reels {
-            reel.startAnimation(withSpeed: defaultReelSpeed)
+            reel.startAnimation(withSpeed: getRandomSpeed())
         }
+    }
+    
+    private func getRandomSpeed() -> CGFloat {
+        guard let algorithm = randomizationAlgorithm else {
+            return 400.0
+        }
+        
+        return algorithm.getRandom()
     }
 }
