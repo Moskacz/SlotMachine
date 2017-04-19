@@ -12,7 +12,7 @@ class ReelsContainerView: UIView {
     
     @IBOutlet var reels: [ReelView]!
     
-    private let defaultReelPassDuration: CGFloat = 2.0
+    private let defaultReelSpeed: CGFloat = 400.0
     
     func setupViews() {
         for reel in reels {
@@ -22,7 +22,7 @@ class ReelsContainerView: UIView {
     
     func startReelsAnimation() {
         for reel in reels {
-            reel.startAnimation(withOnePassDuration: defaultReelPassDuration)
+            reel.startAnimation(withSpeed: defaultReelSpeed)
         }
     }
 }
