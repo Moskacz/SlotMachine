@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         reelsContainerView.setupViews()
-        reelsContainerView.randomizationAlgorithm = SpeedRandomizationAlgorithm(minValue: 400.0, maxValue: 800.0)
+        reelsContainerView.randomizationAlgorithm = SpeedRandomizationAlgorithm(minValue: 200.0, maxValue: 400.0)
     }
     
     // MARK: UI Actions

@@ -13,7 +13,9 @@ class ReelView: UIView {
     private let slotHorizontalMargin: CGFloat = 8.0
     private let spaceBetweenSlots: CGFloat = 8.0
     private var visibleSlots = [UIView]()
-    private var animationSpeed: CGFloat = 1.0
+    private var reusableSlots = [UIView]()
+    private var animationSpeed: CGFloat = 0.0
+    private var timer: Timer?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,12 +26,16 @@ class ReelView: UIView {
     }
     
     func fillWithSlots() {
-        let centerSlot = createCenterSlot()
-        createSlotAbove(slot: centerSlot)
-        createSlotsBelow(slot: centerSlot)
+        createSlots()
     }
     
     func startAnimation(withSpeed speed: CGFloat) {
+        animationSpeed = speed
+        guard animationSpeed != 0.0 else {
+            return
+        }
+        
+        startRepeatAnimationTimer()
         for slot in visibleSlots {
             startAnimation(forSlot: slot, withSpeed: speed)
         }
@@ -37,54 +43,39 @@ class ReelView: UIView {
     
     private func startAnimation(forSlot slot: UIView, withSpeed speed: CGFloat) {
         let distance = bounds.maxY - slot.frame.minY
-        animationSpeed = speed
-        if animationSpeed != 0.0 {
-            let animationDuration = TimeInterval(distance / speed)
-            animate(slot: slot, withDuration: animationDuration)
-        }
+        let animationDuration = TimeInterval(distance / speed)
+        animate(slot: slot, withDuration: animationDuration)
     }
     
     private func animate(slot: UIView, withDuration duration: TimeInterval) {
         UIView.animate(withDuration: duration, delay: 0.0, options: .curveLinear, animations: {
             slot.frame.origin.y = self.bounds.maxY
-        }, completion: { (completed: Bool) in
-            slot.frame.origin.y = -slot.bounds.height
-            self.startAnimation(forSlot: slot, withSpeed: self.animationSpeed)
+        }, completion: { [weak self] (completed: Bool) in
+            self?.removeFromVisible(slot: slot)
+            self?.reusableSlots.append(slot)
         })
+    }
+    
+    private func removeFromVisible(slot: UIView) {
+        guard let index = visibleSlots.index(of: slot) else {
+            return
+        }
+        
+        visibleSlots.remove(at: index)
     }
     
     // MARK: slots creation
     
-    private func createCenterSlot() -> SlotView {
+    private func createSlots() {
         let size = slotSize()
-        let slotFrame = CGRect(x: slotHorizontalMargin, y: bounds.midY - size.height / 2.0, width: size.width, height: size.height)
-        let slot = SlotView(frame: slotFrame)
-        addSubview(slot)
-        visibleSlots.append(slot)
-        return slot
-    }
-    
-    private func createSlotsBelow(slot: UIView) {
-        var nextSlotFrame = slot.frame
-        nextSlotFrame.origin.y += (spaceBetweenSlots + slot.bounds.height)
+        var origin = CGPoint(x: slotHorizontalMargin, y: -size.height)
         
-        while nextSlotFrame.origin.y < bounds.maxY {
-            let slot = SlotView(frame: nextSlotFrame)
-            addSubview(slot)
-            visibleSlots.append(slot)
-            nextSlotFrame.origin.y += (spaceBetweenSlots + slot.bounds.height)
-        }
-    }
-    
-    private func createSlotAbove(slot: UIView) {
-        var nextSlotFrame = slot.frame
-        nextSlotFrame.origin.y -= (spaceBetweenSlots + slot.bounds.height)
-        
-        while nextSlotFrame.maxY > 0 {
-            let slot = SlotView(frame: nextSlotFrame)
-            addSubview(slot)
-            visibleSlots.append(slot)
-            nextSlotFrame.origin.y -= (spaceBetweenSlots + slot.bounds.height)
+        while origin.y < bounds.maxY {
+            let frame = CGRect(origin: origin, size: size)
+            let slotView = SlotView(frame: frame)
+            addSubview(slotView)
+            visibleSlots.append(slotView)
+            origin.y += (size.height + spaceBetweenSlots)
         }
     }
     
@@ -92,5 +83,47 @@ class ReelView: UIView {
         let reelWidth = bounds.width
         let slotWidth = reelWidth - 2.0 * slotHorizontalMargin
         return CGSize(width: slotWidth, height: slotWidth)
+    }
+    
+    // MARK: timer
+    
+    private func startRepeatAnimationTimer() {
+        let time = DispatchTime.now() + calculateTimerDelay()
+        DispatchQueue.main.asyncAfter(deadline: time) {
+            self.addSlotAndAnimate()
+            let timeInterval = TimeInterval((self.slotSize().height  + self.spaceBetweenSlots) / self.animationSpeed)
+            self.timer = Timer.scheduledTimer(timeInterval: timeInterval,
+                                              target: self,
+                                              selector: #selector(self.addSlotAndAnimate),
+                                              userInfo: nil,
+                                              repeats: true)
+        }
+    }
+    
+    func addSlotAndAnimate() {
+        let size = slotSize()
+        let frame = CGRect(x: slotHorizontalMargin, y: -size.width, width: size.width, height: size.height)
+        
+        var slot: UIView
+        if reusableSlots.count > 0 {
+            slot = reusableSlots.removeFirst()
+            slot.frame = frame
+        } else {
+            slot = SlotView(frame: frame)
+        }
+        
+        addSubview(slot)
+        visibleSlots.append(slot)
+
+        startAnimation(forSlot: slot, withSpeed: animationSpeed)
+    }
+    
+    private func calculateTimerDelay() -> TimeInterval {
+        guard let lastSlot = visibleSlots.last else {
+            return 0.0
+        }
+        
+        let offset = fabs(lastSlot.frame.minY - bounds.maxY) + spaceBetweenSlots
+        return TimeInterval(offset / animationSpeed)
     }
 }
