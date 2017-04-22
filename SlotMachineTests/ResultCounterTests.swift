@@ -29,4 +29,10 @@ class ResultCounterTests: XCTestCase {
         XCTAssertFalse(sut.slotsMatch())
     }
     
+    func test_whenCounterReceivedLessResoultsThanExpected_thenItShouldNotRecognizeWinSituation() {
+        let sut = ResultCounter(expectedResultsCount: 2)
+        sut.trackResult(withSlot: SlotType.banana)
+        XCTAssertFalse(sut.slotsMatch())
+    }
+    
 }
