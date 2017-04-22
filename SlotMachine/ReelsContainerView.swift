@@ -21,7 +21,11 @@ class ReelsContainerView: UIView {
     
     func startReelsAnimation() {
         for reel in reels {
-            reel.startAnimation(withSpeed: getRandomSpeed())
+            do {
+                try reel.startAnimation(withSpeed: getRandomSpeed())
+            } catch {
+                print(error)
+            }
         }
     }
     
