@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		353C700A1EAB79FC00999439 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 353C70091EAB79FC00999439 /* Media.xcassets */; };
+		353C700C1EAB7AB300999439 /* SlotElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353C700B1EAB7AB300999439 /* SlotElement.swift */; };
+		353C700E1EAB80D000999439 /* ResultCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353C700D1EAB80D000999439 /* ResultCounter.swift */; };
+		353C70101EAB87DE00999439 /* ResultCounterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353C700F1EAB87DE00999439 /* ResultCounterTests.swift */; };
 		355306771EA53E1A00EAC8F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355306761EA53E1A00EAC8F1 /* AppDelegate.swift */; };
 		355306791EA53E1A00EAC8F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355306781EA53E1A00EAC8F1 /* ViewController.swift */; };
 		3553067C1EA53E1A00EAC8F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3553067A1EA53E1A00EAC8F1 /* Main.storyboard */; };
-		3553067E1EA53E1A00EAC8F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3553067D1EA53E1A00EAC8F1 /* Assets.xcassets */; };
 		355306811EA53E1A00EAC8F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3553067F1EA53E1A00EAC8F1 /* LaunchScreen.storyboard */; };
 		3553068C1EA53E1A00EAC8F1 /* SlotMachineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3553068B1EA53E1A00EAC8F1 /* SlotMachineTests.swift */; };
 		355306971EA53E2500EAC8F1 /* ReelsContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355306961EA53E2500EAC8F1 /* ReelsContainerView.swift */; };
@@ -30,11 +33,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		353C70091EAB79FC00999439 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		353C700B1EAB7AB300999439 /* SlotElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlotElement.swift; sourceTree = "<group>"; };
+		353C700D1EAB80D000999439 /* ResultCounter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultCounter.swift; sourceTree = "<group>"; };
+		353C700F1EAB87DE00999439 /* ResultCounterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultCounterTests.swift; sourceTree = "<group>"; };
 		355306731EA53E1A00EAC8F1 /* SlotMachine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlotMachine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		355306761EA53E1A00EAC8F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		355306781EA53E1A00EAC8F1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3553067B1EA53E1A00EAC8F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3553067D1EA53E1A00EAC8F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		355306801EA53E1A00EAC8F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		355306821EA53E1A00EAC8F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		355306871EA53E1A00EAC8F1 /* SlotMachineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SlotMachineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,13 +94,15 @@
 				355306761EA53E1A00EAC8F1 /* AppDelegate.swift */,
 				355306781EA53E1A00EAC8F1 /* ViewController.swift */,
 				3553067A1EA53E1A00EAC8F1 /* Main.storyboard */,
-				3553067D1EA53E1A00EAC8F1 /* Assets.xcassets */,
 				3553067F1EA53E1A00EAC8F1 /* LaunchScreen.storyboard */,
 				355306821EA53E1A00EAC8F1 /* Info.plist */,
 				355306961EA53E2500EAC8F1 /* ReelsContainerView.swift */,
 				355306981EA53E3B00EAC8F1 /* ReelView.swift */,
 				35E194501EA7C98C00DBED12 /* SlotView.swift */,
 				35E194521EA7D6FF00DBED12 /* RandomizationAlgorithm.swift */,
+				353C70091EAB79FC00999439 /* Media.xcassets */,
+				353C700B1EAB7AB300999439 /* SlotElement.swift */,
+				353C700D1EAB80D000999439 /* ResultCounter.swift */,
 			);
 			path = SlotMachine;
 			sourceTree = "<group>";
@@ -104,6 +112,7 @@
 			children = (
 				3553068B1EA53E1A00EAC8F1 /* SlotMachineTests.swift */,
 				3553068D1EA53E1A00EAC8F1 /* Info.plist */,
+				353C700F1EAB87DE00999439 /* ResultCounterTests.swift */,
 			);
 			path = SlotMachineTests;
 			sourceTree = "<group>";
@@ -194,7 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				355306811EA53E1A00EAC8F1 /* LaunchScreen.storyboard in Resources */,
-				3553067E1EA53E1A00EAC8F1 /* Assets.xcassets in Resources */,
+				353C700A1EAB79FC00999439 /* Media.xcassets in Resources */,
 				3553067C1EA53E1A00EAC8F1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -216,7 +225,9 @@
 				35E194511EA7C98C00DBED12 /* SlotView.swift in Sources */,
 				35E194531EA7D6FF00DBED12 /* RandomizationAlgorithm.swift in Sources */,
 				355306991EA53E3B00EAC8F1 /* ReelView.swift in Sources */,
+				353C700C1EAB7AB300999439 /* SlotElement.swift in Sources */,
 				355306791EA53E1A00EAC8F1 /* ViewController.swift in Sources */,
+				353C700E1EAB80D000999439 /* ResultCounter.swift in Sources */,
 				355306971EA53E2500EAC8F1 /* ReelsContainerView.swift in Sources */,
 				355306771EA53E1A00EAC8F1 /* AppDelegate.swift in Sources */,
 			);
@@ -227,6 +238,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3553068C1EA53E1A00EAC8F1 /* SlotMachineTests.swift in Sources */,
+				353C70101EAB87DE00999439 /* ResultCounterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +369,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = R77HUFLYN8;
 				INFOPLIST_FILE = SlotMachine/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
@@ -371,6 +384,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = R77HUFLYN8;
 				INFOPLIST_FILE = SlotMachine/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;

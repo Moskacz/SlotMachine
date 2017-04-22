@@ -11,22 +11,28 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var reelsContainerView: ReelsContainerView!
+    @IBOutlet weak var button: UIButton!
+    private var animating: Bool = false
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         reelsContainerView.setupViews()
-        reelsContainerView.randomizationAlgorithm = SpeedRandomizationAlgorithm(minValue: 200.0, maxValue: 400.0)
+        reelsContainerView.randomizationAlgorithm = SpeedRandomizationAlgorithm(minValue: 600.0,
+                                                                                maxValue: 800.0)
     }
     
     // MARK: UI Actions
     
-    @IBAction func startButtonTapped(_ sender: UIButton) {
-        reelsContainerView.startReelsAnimation()
+    @IBAction func buttonTapped(_ sender: UIButton) {
+        if animating {
+            reelsContainerView.stopReels()
+            button.setTitle("Start", for: .normal)
+            animating = false
+        } else {
+            reelsContainerView.startReelsAnimation()
+            button.setTitle("Stop", for: .normal)
+            animating = true
+        }
     }
-    
-    @IBAction func stopButtonTapped(_ sender: UIButton) {
-        
-    }
-
 }
 

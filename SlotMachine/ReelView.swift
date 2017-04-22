@@ -12,19 +12,29 @@ enum ReelViewError: Error {
     case zeroSpeedGiven
 }
 
+protocol ReelViewDataSource: class {
+    func getElement(forIndex index: Int) -> SlotElement
+}
+
+protocol ReelViewDelegate: class {
+    func reelView(_ reelView: ReelView, didSelectElement element: SlotElement)
+}
+
 class ReelView: UIView {
     
     private let slotHorizontalMargin: CGFloat = 8.0
     private let spaceBetweenSlots: CGFloat = 8.0
-    private var visibleSlots = [UIView]()
+    private var visibleSlots = [SlotView]()
     private var animationSpeed: CGFloat = 0.0
-    private var timer: Timer?
+    private var animating: Bool = false
+    weak var dataSource: ReelViewDataSource?
+    weak var delegate: ReelViewDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         layer.cornerRadius = 2.0
         layer.borderWidth = 1.0
-        layer.borderColor = UIColor.lightGray.cgColor
+        layer.borderColor = UIColor.white.cgColor
         clipsToBounds = true
     }
     
@@ -32,35 +42,53 @@ class ReelView: UIView {
     
     func fillWithSlots() {
         createSlots()
-        centerSlots()
+        centerSlots(animated: false, completion: nil)
     }
     
     private func createSlots() {
         let size = slotSize()
         var origin = CGPoint(x: slotHorizontalMargin, y: -size.height)
+        var slotIndex = 0
         
         while origin.y < bounds.maxY {
             let frame = CGRect(origin: origin, size: size)
             let slotView = SlotView(frame: frame)
+            slotView.slotElement = dataSource?.getElement(forIndex: slotIndex)
             addSubview(slotView)
             visibleSlots.append(slotView)
             origin.y += (size.height + spaceBetweenSlots)
+            slotIndex += 1
         }
     }
     
-    private func centerSlots() {
+    private func centerSlots(animated: Bool, completion: ((Void) -> Void)?) {
         let centerSlot = middleSlot()
         let verticalOffset = bounds.midY - centerSlot.frame.midY
         
-        for slot in visibleSlots {
-            slot.frame.origin.y += verticalOffset
+        if animated {
+            UIView.animate(withDuration: 0.3,
+                           delay: 0.0,
+                           usingSpringWithDamping: 0.4,
+                           initialSpringVelocity: 1.0,
+                           options: [],
+                           animations: {
+                            for slot in self.visibleSlots {
+                                slot.frame.origin.y += verticalOffset
+                            }
+            }, completion: { _ in
+                completion?()
+            })
+        } else {
+            for slot in self.visibleSlots {
+                slot.frame.origin.y += verticalOffset
+            }
         }
     }
     
-    private func middleSlot() -> UIView {
+    private func middleSlot() -> SlotView {
         let reelVerticalCenter = bounds.midY
         
-        let sortedByDistance = visibleSlots.sorted { (left: UIView, right: UIView) -> Bool in
+        let sortedByDistance = visibleSlots.sorted { (left: SlotView, right: SlotView) -> Bool in
             let leftDistance = fabs(reelVerticalCenter - left.frame.midY)
             let rightDistance = fabs(reelVerticalCenter - right.frame.midY)
             return leftDistance < rightDistance
@@ -82,10 +110,35 @@ class ReelView: UIView {
             throw ReelViewError.zeroSpeedGiven
         }
         
+        guard !animating else {
+            return
+        }
+        
+        animating = true
         animationSpeed = speed
         for slot in visibleSlots {
             startAnimation(forSlot: slot)
         }
+    }
+    
+    func stopAnimation() {
+        guard animating else {
+            return
+        }
+        
+        animating = false
+        for slot in visibleSlots {
+            slot.frame = slot.layer.presentation()!.frame
+            slot.layer.removeAllAnimations()
+        }
+        
+        centerSlots(animated: true, completion: {
+            guard let element = self.middleSlot().slotElement else {
+                return
+            }
+            
+            self.delegate?.reelView(self, didSelectElement: element)
+        })
     }
     
     private func startAnimation(forSlot slot: UIView) {
@@ -102,6 +155,10 @@ class ReelView: UIView {
         UIView.animate(withDuration: duration, delay: 0.0, options: .curveLinear, animations: {
             slot.frame.origin.y = self.bounds.maxY
         }, completion: { (completed: Bool) in
+            guard self.animating else {
+                return
+            }
+            
             self.startRepeatAnimation(forSlot: slot)
         })
     }
@@ -118,6 +175,9 @@ class ReelView: UIView {
                         
             slot.frame.origin.y = self.bounds.maxY
         }, completion: { (completed: Bool) in
+            guard self.animating else {
+                return
+            }
             self.startRepeatAnimation(forSlot: slot)
         })
     }
