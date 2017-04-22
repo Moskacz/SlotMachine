@@ -12,6 +12,7 @@ class ReelsContainerView: UIView, ReelViewDataSource, ReelViewDelegate {
     
     @IBOutlet var reels: [ReelView]!
     @IBOutlet var selectionView: UIView!
+    private let defaultAnimationSpeed: CGFloat = 400.0
     
     var resultCounter: ResultCounter?
     var randomizationAlgorithm: RandomizationAlgorithm<CGFloat>?
@@ -55,7 +56,7 @@ class ReelsContainerView: UIView, ReelViewDataSource, ReelViewDelegate {
     
     private func getRandomSpeed() -> CGFloat {
         guard let algorithm = randomizationAlgorithm else {
-            return 400.0
+            return defaultAnimationSpeed
         }
         
         return algorithm.getRandom()
