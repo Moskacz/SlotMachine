@@ -11,6 +11,8 @@
 		353C700C1EAB7AB300999439 /* SlotElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353C700B1EAB7AB300999439 /* SlotElement.swift */; };
 		353C700E1EAB80D000999439 /* ResultCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353C700D1EAB80D000999439 /* ResultCounter.swift */; };
 		353C70101EAB87DE00999439 /* ResultCounterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353C700F1EAB87DE00999439 /* ResultCounterTests.swift */; };
+		354868B41EACEE9C00E1230C /* SlotsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354868B31EACEE9C00E1230C /* SlotsProvider.swift */; };
+		354868B61EACF0A000E1230C /* RandomSlotsProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354868B51EACF0A000E1230C /* RandomSlotsProviderTests.swift */; };
 		355306771EA53E1A00EAC8F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355306761EA53E1A00EAC8F1 /* AppDelegate.swift */; };
 		355306791EA53E1A00EAC8F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355306781EA53E1A00EAC8F1 /* ViewController.swift */; };
 		3553067C1EA53E1A00EAC8F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3553067A1EA53E1A00EAC8F1 /* Main.storyboard */; };
@@ -37,6 +39,8 @@
 		353C700B1EAB7AB300999439 /* SlotElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlotElement.swift; sourceTree = "<group>"; };
 		353C700D1EAB80D000999439 /* ResultCounter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultCounter.swift; sourceTree = "<group>"; };
 		353C700F1EAB87DE00999439 /* ResultCounterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultCounterTests.swift; sourceTree = "<group>"; };
+		354868B31EACEE9C00E1230C /* SlotsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlotsProvider.swift; sourceTree = "<group>"; };
+		354868B51EACF0A000E1230C /* RandomSlotsProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomSlotsProviderTests.swift; sourceTree = "<group>"; };
 		355306731EA53E1A00EAC8F1 /* SlotMachine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlotMachine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		355306761EA53E1A00EAC8F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		355306781EA53E1A00EAC8F1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +107,7 @@
 				353C70091EAB79FC00999439 /* Media.xcassets */,
 				353C700B1EAB7AB300999439 /* SlotElement.swift */,
 				353C700D1EAB80D000999439 /* ResultCounter.swift */,
+				354868B31EACEE9C00E1230C /* SlotsProvider.swift */,
 			);
 			path = SlotMachine;
 			sourceTree = "<group>";
@@ -113,6 +118,7 @@
 				3553068B1EA53E1A00EAC8F1 /* SlotMachineTests.swift */,
 				3553068D1EA53E1A00EAC8F1 /* Info.plist */,
 				353C700F1EAB87DE00999439 /* ResultCounterTests.swift */,
+				354868B51EACF0A000E1230C /* RandomSlotsProviderTests.swift */,
 			);
 			path = SlotMachineTests;
 			sourceTree = "<group>";
@@ -224,6 +230,7 @@
 			files = (
 				35E194511EA7C98C00DBED12 /* SlotView.swift in Sources */,
 				35E194531EA7D6FF00DBED12 /* RandomizationAlgorithm.swift in Sources */,
+				354868B41EACEE9C00E1230C /* SlotsProvider.swift in Sources */,
 				355306991EA53E3B00EAC8F1 /* ReelView.swift in Sources */,
 				353C700C1EAB7AB300999439 /* SlotElement.swift in Sources */,
 				355306791EA53E1A00EAC8F1 /* ViewController.swift in Sources */,
@@ -238,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3553068C1EA53E1A00EAC8F1 /* SlotMachineTests.swift in Sources */,
+				354868B61EACF0A000E1230C /* RandomSlotsProviderTests.swift in Sources */,
 				353C70101EAB87DE00999439 /* ResultCounterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

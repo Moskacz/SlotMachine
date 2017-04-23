@@ -20,7 +20,11 @@ enum SlotType {
     case orange
 }
 
-struct SlotElement {
+struct SlotElement: Equatable {
     let image: UIImage
     let type: SlotType
+}
+
+func ==(lhs:SlotElement, rhs:SlotElement) -> Bool {
+    return lhs.type == rhs.type
 }

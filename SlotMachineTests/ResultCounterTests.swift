@@ -11,8 +11,6 @@ import XCTest
 
 class ResultCounterTests: XCTestCase {
     
-    var sut: ResultCounter!
-    
     func test_whenThreeReelsSelectTheSameSlot_thenItShouldRecognizeWinSituation() {
         let sut = ResultCounter(expectedResultsCount: 3)
         sut.trackResult(withSlot: SlotType.banana)

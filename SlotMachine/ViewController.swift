@@ -16,9 +16,13 @@ class ViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        let slotsProvider = RandomSlotsProvider()
+        let elements = [slotsProvider.getSlots(), slotsProvider.getSlots(), slotsProvider.getSlots()]
+        reelsContainerView.reelsElements = elements
+        
         reelsContainerView.setupViews()
         reelsContainerView.randomizationAlgorithm = SpeedRandomizationAlgorithm(minValue: 300.0,
-                                                                                maxValue: 400.0)
+                                                                                maxValue: 500.0)
     }
     
     // MARK: UI Actions

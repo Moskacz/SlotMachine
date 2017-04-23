@@ -16,16 +16,7 @@ class ReelsContainerView: UIView, ReelViewDataSource, ReelViewDelegate {
     
     var resultCounter: ResultCounter?
     var randomizationAlgorithm: RandomizationAlgorithm<CGFloat>?
-    private let elements: [SlotElement] = [SlotElement(image: #imageLiteral(resourceName: "slot1"), type: .seven),
-                                           SlotElement(image: #imageLiteral(resourceName: "slot2"), type: .watermelon),
-                                           SlotElement(image: #imageLiteral(resourceName: "slot3"), type: .plum),
-                                           SlotElement(image: #imageLiteral(resourceName: "slot4"), type: .lemon),
-                                           SlotElement(image: #imageLiteral(resourceName: "slot5"), type: .banana),
-                                           SlotElement(image: #imageLiteral(resourceName: "slot6"), type: .bigWin),
-                                           SlotElement(image: #imageLiteral(resourceName: "slot7"), type: .cherry),
-                                           SlotElement(image: #imageLiteral(resourceName: "slot8"), type: .bar),
-                                           SlotElement(image: #imageLiteral(resourceName: "slot9"), type: .orange)]
-
+    var reelsElements = [[SlotElement]]()
     
     func setupViews() {
         for reel in reels {
@@ -64,7 +55,9 @@ class ReelsContainerView: UIView, ReelViewDataSource, ReelViewDelegate {
     
     // MARK: ReelViewDataSource
     
-    func getElement(forIndex index: Int) -> SlotElement {
+    func getElement(forReel reel: ReelView, atIndex index: Int) -> SlotElement {
+        let reelIndex: Int = reels.index(of: reel)!
+        let elements = reelsElements[reelIndex]
         let slotIndex = index % elements.count
         return elements[slotIndex]
     }

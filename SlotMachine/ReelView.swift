@@ -13,7 +13,7 @@ enum ReelViewError: Error {
 }
 
 protocol ReelViewDataSource: class {
-    func getElement(forIndex index: Int) -> SlotElement
+    func getElement(forReel reel: ReelView, atIndex index: Int) -> SlotElement
 }
 
 protocol ReelViewDelegate: class {
@@ -59,7 +59,7 @@ class ReelView: UIView {
         while origin.y < slotsEndingOffset() {
             let frame = CGRect(origin: origin, size: size)
             let slotView = SlotView(frame: frame)
-            slotView.slotElement = dataSource?.getElement(forIndex: slotIndex)
+            slotView.slotElement = dataSource?.getElement(forReel: self, atIndex: slotIndex)
             addSubview(slotView)
             slots.append(slotView)
             origin.y += (size.height + spaceBetweenSlots)
